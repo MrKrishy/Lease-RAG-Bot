@@ -41,6 +41,9 @@ requirements.txt
 templates/index.html
 Lease Contracts/           # Your PDFs
 test_setup.py
+test_document_functions.py
+test_sensitive_integration.py  #Test if sensitive information
+test_document_listing.py       #List out the documents the bot has access to
 ```
 
 ---
