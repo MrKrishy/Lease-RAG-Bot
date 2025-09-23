@@ -7,8 +7,8 @@ Flask web app powered by Retrieval-Augmented Generation (RAG) for answering ques
 ## ⚡ Quick Start
 ```bash
 # Clone repo
-git clone https://github.com/<your-username>/lease-rag-bot.git
-cd lease-rag-bot
+git clone https://github.com/MrKrishy/Lease-RAG-Bot.git
+cd Lease-RAG-Bot
 
 # Install deps
 pip install -r requirements.txt
@@ -40,7 +40,7 @@ sensitive_data_protection.py# PII masking
 requirements.txt
 templates/index.html
 Lease Contracts/           # Your PDFs
-tests/test_setup.py
+test_setup.py
 ```
 
 ---
