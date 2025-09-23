@@ -1,0 +1,17 @@
+langchain_community
+langchain
+langchainhub
+langchain-openai
+langchain-chroma
+pypdf
+asyncio
+chromadb
+sentence-transformers
+langchain-huggingface
+fastapi
+uvicorn
+transformers
+torch
+PyMuPDF
+Flask
+tiktoken
