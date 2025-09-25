@@ -15,8 +15,8 @@ A web interface for asking questions about lease documents using AI-powered Retr
 ## ⚡ Quick Start
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/lease-rag-bot.git
-cd lease-rag-bot
+git clone https://github.com/<your-username>/Lease-RAG-Bot.git
+cd Lease-RAG-Bot
 
 # 2. (Optional) Create a virtual environment
 python -m venv .venv
@@ -54,8 +54,7 @@ Open your browser and go to **http://localhost:5001**.
 ├── templates/
 │   └── index.html             # Web interface
 ├── Lease Contracts/            # Your PDF documents
-└── tests/
-    └── test_setup.py           # Setup checks
+└── test_setup.py               # Setup checks
 ```
 
 ---
@@ -67,11 +66,6 @@ Open your browser and go to **http://localhost:5001**.
 
 ---
 
-## 🧪 Tests
-Run the setup and test scripts to confirm your environment:
-```bash
-pytest tests/
-```
 
 ---
 
