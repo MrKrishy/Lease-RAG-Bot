@@ -250,14 +250,15 @@ def compare_across_documents(question: str) -> dict:
             context = "\n\n".join(snippets)
 
             summarize_prompt = (
-                "You are analyzing a single lease document. Based ONLY on the CONTEXT, "
-                "summarize the parts relevant to the user's request as short bullets. "
-                "If the information is not clearly present, say 'No explicit details found.'\n\n"
+                "You are analyzing a single lease document. Work strictly within the supplied CONTEXT. "
+                "Extract only the details that directly answer the USER REQUEST. "
+                "Ignore any mentions of other topics, even if present in the context. "
+                "If the context does not clearly answer the request, reply exactly: No explicit details found.\n\n"
                 f"DOCUMENT: {doc_name}\n"
                 f"USER REQUEST: {question}\n"
                 "CONTEXT:\n"
                 f"{context}\n\n"
-                "Output as short bullet points."
+                "Respond with either a single sentence or up to 3 short bullet points, without adding headings or unrelated commentary."
             )
 
             with get_openai_callback() as cb:
@@ -291,16 +292,14 @@ def compare_across_documents(question: str) -> dict:
         f"{item['document']}:\n{item['summary']}" for item in per_doc_summaries
     )
     compare_prompt = (
-        "Compare the tenant-related terms across these documents. "
-        "Answer ONLY the subject(s) explicitly asked by the user and strictly use the provided CONTEXT. "
-        "If the question is about a specific topic (e.g., parking), DO NOT include other topics (e.g., responsibilities, remedies, notice periods). "
-        "If the answer is not clearly stated in the context, reply exactly: Not specified in the provided documents. "
-        "Do not add extra commentary or unrelated details. "
-             
-        "If a question is asked about identifying key differences policy-by-policy (e.g., rights, responsibilities, notice periods, remedies). "
-        "Be specific and attribute differences to document names. "
+        "You are comparing lease documents using only the provided summaries. "
+        f"USER REQUEST: {question}\n"
+        "Focus exclusively on answering the user's request; do not introduce additional topics. "
+        "If the request targets a specific subject (e.g., tenants, parking), ignore all other subjects. "
+        "If the information is not present, respond exactly: Not specified in the provided documents. "
+        "Cite document names when distinguishing between them and keep the response concise.\n\n"
         f"INPUT SUMMARIES:\n{comparisons_text}\n\n"
-        "Return a clear, structured list of differences, grouped by topic."
+        "Return a clear, structured answer that directly satisfies the user request."
     )
 
     with get_openai_callback() as cb:
